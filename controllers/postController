@@ -1,5 +1,4 @@
-const posts = require('../data/postData')
-
+const posts = require("../data/postData");
 
 //index
 const index = (req, res) => {
@@ -33,8 +32,13 @@ const modify = (req, res) => {
 
 // destroy
 const destroy = (req, res) => {
-    res.send(`Cancellazione del post con id ${req.params.id}`);
-}
+  const id = parseInt(req.params.id);
+
+  const post = posts.find((post) => post.id === id);
+  posts.splice(posts.indexOf(post), 1);
+  console.log(posts);
+  res.sendStatus(204);
+};
 
 module.exports = {
   index,
@@ -42,5 +46,5 @@ module.exports = {
   store,
   update,
   modify,
-  destroy
+  destroy,
 };
