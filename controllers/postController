@@ -47,6 +47,14 @@ const update = (req, res) => {
 
   const post = posts.find(post => post.id === id);
 
+  if(!post){
+    res.status(404);
+    return res.json({
+      error: 'Not Found',
+      message: 'Post Not Found'
+    })
+  }
+
   post.title = req.body.title;
   post.content = req.body.content;
   post.image = req.body.image;
