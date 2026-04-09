@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const postController = require("../controllers/postController");
-const checkPostExist = require("../middlewares/serverError")
 
 // CRUD
 
